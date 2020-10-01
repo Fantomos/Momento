@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.momento.momento.MainActivity">
+    <item
+        android:id="@+id/action_recherche"
+        android:orderInCategory="100"
+        android:title="Rechercher"
+        android:icon="@drawable/search"
+        app:showAsAction="always|collapseActionView"
+        app:actionViewClass="androidx.appcompat.widget.SearchView" />
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_parametre"
+        android:orderInCategory="100"
+        android:title="Paramètres"
+        android:icon="@drawable/settings"
+        app:showAsAction="always" />
+</menu>

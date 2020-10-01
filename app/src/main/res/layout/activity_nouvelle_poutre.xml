@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NouvellePoutre">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1.5dp"
+        android:layout_marginBottom="16dp"
+        android:background="#C4111111"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_height="1.5dp"
+        android:layout_marginTop="16dp"
+        android:background="#C4111111"
+        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editForce" />
+
+    <EditText
+        android:id="@+id/editNom"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:ems="10"
+        android:hint="Nom"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/editLongueur"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <EditText
+        android:id="@+id/editLongueur"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:ems="10"
+        android:hint="Longueur (en m)"
+        android:inputType="number|numberDecimal"
+        app:layout_constraintBottom_toTopOf="@+id/editForce"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editNom" />
+
+    <EditText
+        android:id="@+id/editForce"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="32dp"
+        android:ems="10"
+        android:hint="Force appliquée (en kN)"
+        android:inputType="number|numberDecimal"
+        app:layout_constraintBottom_toTopOf="@+id/divider2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editLongueur" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:checkedButton="@id/radioType1"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/divider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider2">
+
+        <RadioButton
+            android:id="@+id/radioType1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="0dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:button="@null"
+            android:drawableLeft="@mipmap/ic_launcher"
+            android:drawableRight="@android:drawable/btn_radio"
+            android:gravity="center"
+            android:hapticFeedbackEnabled="false"
+            android:paddingRight="10dp"
+            android:text="Deux appuis avec une charge ponctuelle au centre"
+            android:textSelectHandle="@null"
+            android:textSelectHandleLeft="@null"
+            android:textSelectHandleRight="@null"
+            android:textSize="18sp" />
+
+        <RadioButton
+            android:id="@+id/radioType2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="0dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:button="@null"
+            android:drawableLeft="@android:drawable/btn_radio"
+            android:drawableRight="@mipmap/ic_launcher"
+            android:gravity="center"
+            android:hapticFeedbackEnabled="false"
+            android:paddingLeft="10dp"
+            android:text="Deux appuis avec une charge répartie"
+            android:textSelectHandle="@null"
+            android:textSelectHandleLeft="@null"
+            android:textSelectHandleRight="@null"
+            android:textSize="18sp" />
+
+        <RadioButton
+            android:id="@+id/radioType3"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="0dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:button="@null"
+            android:drawableLeft="@mipmap/ic_launcher"
+            android:drawableRight="@android:drawable/btn_radio"
+            android:gravity="center"
+            android:hapticFeedbackEnabled="false"
+            android:paddingRight="10dp"
+            android:text="Bi-encastrée avec une charge répartie"
+            android:textSelectHandle="@null"
+            android:textSelectHandleLeft="@null"
+            android:textSelectHandleRight="@null"
+            android:textSize="18sp" />
+
+        <RadioButton
+            android:id="@+id/radioType4"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="0dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:button="@null"
+            android:drawableLeft="@android:drawable/btn_radio"
+            android:drawableRight="@mipmap/ic_launcher"
+            android:gravity="center"
+            android:hapticFeedbackEnabled="false"
+            android:paddingLeft="10dp"
+            android:text="Encastrée avec une charge répartie"
+            android:textSelectHandle="@null"
+            android:textSelectHandleLeft="@null"
+            android:textSelectHandleRight="@null"
+            android:textSize="18sp" />
+
+        <RadioButton
+            android:id="@+id/radioType5"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="0dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:button="@null"
+            android:drawableLeft="@mipmap/ic_launcher"
+            android:drawableRight="@android:drawable/btn_radio"
+            android:gravity="center"
+            android:hapticFeedbackEnabled="false"
+            android:paddingRight="10dp"
+            android:text="Encastrée avec une charge poncutelle au bout"
+            android:textSelectHandle="@null"
+            android:textSelectHandleLeft="@null"
+            android:textSelectHandleRight="@null"
+            android:textSize="18sp" />
+
+    </RadioGroup>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
