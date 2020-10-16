@@ -21,6 +21,10 @@ public class PoutresDBB {
     private static final int NUM_COL_LONGUEUR = 3;
     private static final String COL_FORCE = "Force";
     private static final int NUM_COL_FORCE = 4;
+    private static final String COL_YOUNG = "Young";
+    private static final int NUM_COL_YOUNG = 5;
+    private static final String COL_INERTIE = "Inertie";
+    private static final int NUM_COL_INERTIE = 6;
     private SQLiteDatabase bdd;
     private MaBaseSQLite maBaseSQLite;
 
@@ -49,6 +53,8 @@ public class PoutresDBB {
         values.put(COL_TYPE, poutre.getType());
         values.put(COL_LONGUEUR, poutre.getLongueur());
         values.put(COL_FORCE, poutre.getForce());
+        values.put(COL_YOUNG, poutre.getYoung());
+        values.put(COL_INERTIE, poutre.getInertie());
         return bdd.insert(TABLE_POUTRES, null, values);
     }
 
@@ -58,6 +64,8 @@ public class PoutresDBB {
         values.put(COL_TYPE, poutre.getType());
         values.put(COL_LONGUEUR, poutre.getLongueur());
         values.put(COL_FORCE, poutre.getForce());
+        values.put(COL_YOUNG, poutre.getYoung());
+        values.put(COL_INERTIE, poutre.getInertie());
         return bdd.update(TABLE_POUTRES, values, COL_ID + " = " +poutre.getId(), null);
     }
 
@@ -66,7 +74,7 @@ public class PoutresDBB {
     }
 
     public Poutre getPoutresAvecID(int id){
-        Cursor c = bdd.query(TABLE_POUTRES, new String[] {COL_ID, COL_NOM, COL_TYPE, COL_LONGUEUR, COL_FORCE}, COL_ID + " = " +id, null, null, null, null);
+        Cursor c = bdd.query(TABLE_POUTRES, new String[] {COL_ID, COL_NOM, COL_TYPE, COL_LONGUEUR, COL_FORCE, COL_YOUNG, COL_INERTIE}, COL_ID + " = " +id, null, null, null, null);
         c.moveToFirst();
         Poutre result = cursorToPoutre(c);
         c.close();
@@ -74,7 +82,7 @@ public class PoutresDBB {
     }
 
     public ArrayList<Poutre> getAllPoutres(){
-        Cursor c = bdd.query(TABLE_POUTRES, new String[] {COL_ID, COL_NOM, COL_TYPE, COL_LONGUEUR, COL_FORCE}, null, null, null, null, null);
+        Cursor c = bdd.query(TABLE_POUTRES, new String[] {COL_ID, COL_NOM, COL_TYPE, COL_LONGUEUR, COL_FORCE, COL_YOUNG, COL_INERTIE}, null, null, null, null, null);
         ArrayList<Poutre> listPoutre = new ArrayList<>();
         try {
             while (c.moveToNext()) {
@@ -90,7 +98,7 @@ public class PoutresDBB {
     private Poutre cursorToPoutre(Cursor c){
         if (c.getCount() == 0)
             return null;
-        Poutre poutre = new Poutre(c.getInt(NUM_COL_ID),c.getString(NUM_COL_NOM),c.getInt(NUM_COL_TYPE),c.getDouble(NUM_COL_LONGUEUR),c.getDouble(NUM_COL_FORCE));
+        Poutre poutre = new Poutre(c.getInt(NUM_COL_ID),c.getString(NUM_COL_NOM),c.getInt(NUM_COL_TYPE),c.getDouble(NUM_COL_LONGUEUR),c.getDouble(NUM_COL_FORCE),c.getDouble(NUM_COL_YOUNG),c.getDouble(NUM_COL_INERTIE));
         return poutre;
     }
 }

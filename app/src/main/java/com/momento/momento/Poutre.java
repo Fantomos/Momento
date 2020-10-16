@@ -6,20 +6,26 @@ public class Poutre {
     private int type;
     private double longueur;
     private double force;
+    private double young;
+    private double inertie;
 
-    public Poutre(int id,String nom, int type,double longueur,double force){
+    public Poutre(int id,String nom, int type,double longueur,double force,double young,double inertie){
         this.id = id;
         this.nom = nom;
         this.type = type;
         this.longueur = longueur;
         this.force = force;
+        this.young = young;
+        this.inertie = inertie;
     }
 
-    public Poutre(String nom, int type,double longueur,double force){
+    public Poutre(String nom, int type,double longueur,double force,double young,double inertie){
         this.nom = nom;
         this.type = type;
         this.longueur = longueur;
         this.force = force;
+        this.young = young;
+        this.inertie = inertie;
     }
     public int getId() {
         return id;
@@ -61,4 +67,19 @@ public class Poutre {
         this.longueur = longueur;
     }
 
+    public double getYoung() {
+        return young;
+    }
+
+    public void setYoung(double young) {
+        this.young = young;
+    }
+
+    public double getInertie() {
+        return inertie;
+    }
+
+    public void setInertie(double inertie) {
+        this.inertie = inertie;
+    }
 }

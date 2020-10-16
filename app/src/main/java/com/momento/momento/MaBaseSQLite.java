@@ -12,9 +12,11 @@ public class MaBaseSQLite extends SQLiteOpenHelper {
     private static final String COL_TYPE = "Type";
     private static final String COL_LONGUEUR = "Longueur";
     private static final String COL_FORCE = "Force";
+    private static final String COL_YOUNG = "Young";
+    private static final String COL_INERTIE = "Inertie";
     private static final String CREATE_BDD = "CREATE TABLE " + TABLE_POUTRES + " ("
             + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COL_NOM + " TEXT NOT NULL, "
-            + COL_TYPE + " TEXT NOT NULL, " + COL_LONGUEUR + " DOUBLE NOT NULL, " + COL_FORCE + " DOUBLE NOT NULL)";
+            + COL_TYPE + " TEXT NOT NULL, " + COL_LONGUEUR + " DOUBLE NOT NULL, " + COL_FORCE + " DOUBLE NOT NULL, " + COL_YOUNG + " DOUBLE NOT NULL, " + COL_INERTIE + " DOUBLE NOT NULL)";
 
     public MaBaseSQLite(Context context, String name, CursorFactory factory, int version) {
         super(context, name, factory, version);
