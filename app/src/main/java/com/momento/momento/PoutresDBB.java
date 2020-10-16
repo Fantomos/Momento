@@ -52,13 +52,13 @@ public class PoutresDBB {
         return bdd.insert(TABLE_POUTRES, null, values);
     }
 
-    public int updatePoutre(int id, Poutre poutre){
+    public int updatePoutre(Poutre poutre){
         ContentValues values = new ContentValues();
         values.put(COL_NOM,  poutre.getNom());
         values.put(COL_TYPE, poutre.getType());
         values.put(COL_LONGUEUR, poutre.getLongueur());
         values.put(COL_FORCE, poutre.getForce());
-        return bdd.update(TABLE_POUTRES, values, COL_ID + " = " +id, null);
+        return bdd.update(TABLE_POUTRES, values, COL_ID + " = " +poutre.getId(), null);
     }
 
     public int removePoutreAvecID(int id){

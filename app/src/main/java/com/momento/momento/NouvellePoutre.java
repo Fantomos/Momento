@@ -84,8 +84,13 @@ public class NouvellePoutre extends AppCompatActivity {
                 Intent intent = new Intent(NouvellePoutre.this, PoutreDetails.class);
                 intent.putExtra("id", id2);
                 startActivity(intent);
+                overridePendingTransition(R.transition.enter_from_right, R.transition.exit_out_left);
                 return true;
             }
+        }
+        else if(id == android.R.id.home){
+            startActivity(new Intent(NouvellePoutre.this,PoutreDetails.class));
+            overridePendingTransition(R.transition.enter_from_left, R.transition.exit_out_right);
         }
         return super.onOptionsItemSelected(item);
     }

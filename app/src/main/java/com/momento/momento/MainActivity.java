@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, NouvellePoutre.class));
+                overridePendingTransition(R.transition.enter_from_right, R.transition.exit_out_left);
             }
         });
 

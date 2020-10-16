@@ -10,12 +10,15 @@ import com.momento.momento.R;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -33,7 +36,8 @@ public class PoutreDetails extends AppCompatActivity {
     private double flechissantV = 0;
     private double abscisseV = 0;
     private Poutre p;
-
+    private int id;
+    private PoutresDBB db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,41 +46,21 @@ public class PoutreDetails extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Intent intent = getIntent();
-        final int id = intent.getIntExtra("id",-1);
+        id = intent.getIntExtra("id",-1);
         if(id == -1){
             startActivity(new Intent(PoutreDetails.this,MainActivity.class));
+            overridePendingTransition(R.transition.enter_from_left, R.transition.exit_out_right);
         }
-        final PoutresDBB db = new PoutresDBB(getBaseContext());
+        db = new PoutresDBB(getBaseContext());
         db.open();
         p = db.getPoutresAvecID(id);
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                    new AlertDialog.Builder(PoutreDetails.this)
-                            .setIcon(R.drawable.delete)
-                            .setTitle("Supprimer la poutre")
-                            .setMessage("Etes-vous sûr de vouloir supprimer cette poutre ?")
-                            .setPositiveButton("Oui", new DialogInterface.OnClickListener()
-                            {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    db.removePoutreAvecID(id);
-                                    db.close();
-                                    startActivity(new Intent(PoutreDetails.this,MainActivity.class));
-                                }
-                            })
-                            .setNegativeButton("Non", null)
-                            .show();
-            }
-        });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         ImageView imageType = findViewById(R.id.imageType);
-        TextView nom = findViewById(R.id.Nom);
+        final TextView nom = findViewById(R.id.Nom);
         TextView idT = findViewById(R.id.Id);
         TextView type = findViewById(R.id.type);
-        TextView longueur = findViewById(R.id.longueur);
+        final TextView longueur = findViewById(R.id.longueur);
         final TextView force = findViewById(R.id.force);
         TextView forceReaction = findViewById(R.id.forceReaction);
         final TextView momentReaction = findViewById(R.id.momentReaction);
@@ -86,6 +70,45 @@ public class PoutreDetails extends AppCompatActivity {
         SeekBar seekBar = findViewById(R.id.seekBar);
         final TextView tranchant= findViewById(R.id.tranchant);
         final TextView flechissant = findViewById(R.id.flechissant);
+
+        final FloatingActionButton fab = findViewById(R.id.fab);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final EditText nomEdit = findViewById(R.id.nomEdit);
+                final EditText forceEdit = findViewById(R.id.forceEdit);
+                final EditText longueurEdit = findViewById(R.id.longueurEdit);
+
+                nom.setVisibility(View.INVISIBLE);
+                force.setVisibility(View.INVISIBLE);
+                longueur.setVisibility(View.INVISIBLE);
+
+                nomEdit.setVisibility(View.VISIBLE);
+                forceEdit.setVisibility(View.VISIBLE);
+                longueurEdit.setVisibility(View.VISIBLE);
+
+                nomEdit.setText(p.getNom());
+                forceEdit.setText(String.valueOf(p.getForce()));
+                longueurEdit.setText(String.valueOf(p.getLongueur()));
+
+                fab.setImageDrawable(ContextCompat.getDrawable(getBaseContext(),R.drawable.done));
+                fab.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        p.setNom(nomEdit.getText().toString());
+                        p.setForce(Double.parseDouble(forceEdit.getText().toString()));
+                        p.setLongueur(Double.parseDouble(longueurEdit.getText().toString()));
+                        db.updatePoutre(p);
+                        finish();
+                        overridePendingTransition(0, 0);
+                        startActivity(getIntent());
+                        overridePendingTransition(0, 0);
+                    }
+                });
+            }
+        });
+
 
         final String pattern = "##.##";
         nom.setText(p.getNom());
@@ -256,5 +279,42 @@ public class PoutreDetails extends AppCompatActivity {
         seekBar.setProgress(5);
 
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_poutre_details, menu);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id2 = item.getItemId();
+        switch (id2){
+            case android.R.id.home:
+                startActivity(new Intent(PoutreDetails.this, MainActivity.class));
+                overridePendingTransition(R.transition.enter_from_left, R.transition.exit_out_right);
+                break;
+            case R.id.action_delete:
+                new AlertDialog.Builder(PoutreDetails.this)
+                        .setIcon(R.drawable.delete)
+                        .setTitle("Supprimer la poutre")
+                        .setMessage("Etes-vous sûr de vouloir supprimer cette poutre ?")
+                        .setPositiveButton("Oui", new DialogInterface.OnClickListener()
+                        {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                db.removePoutreAvecID(id);
+                                db.close();
+                                startActivity(new Intent(PoutreDetails.this,MainActivity.class));
+                            }
+                        })
+                        .setNegativeButton("Non", null)
+                        .show();
+                break;
+        }
+        return true;
     }
 }

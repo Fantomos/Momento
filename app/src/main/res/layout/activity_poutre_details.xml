@@ -104,12 +104,13 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
+                    android:gravity="top"
                     android:text="50 mètres"
                     android:textSize="20sp"
                     android:visibility="invisible"
                     app:layout_column="1"
                     app:layout_columnWeight="1"
-                    app:layout_gravity="center_vertical"
+                    app:layout_gravity="top|center_vertical"
                     app:layout_row="1" />
 
                 <EditText
@@ -119,12 +120,13 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
+                    android:gravity="top"
                     android:text="50 kN"
                     android:textSize="20sp"
                     android:visibility="invisible"
                     app:layout_column="1"
                     app:layout_columnWeight="1"
-                    app:layout_gravity="center_vertical"
+                    app:layout_gravity="top|center_vertical"
                     app:layout_row="2"
                     tools:layout_editor_absoluteX="-15dp"
                     tools:layout_editor_absoluteY="369dp" />
@@ -406,7 +408,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/imageType"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageType"
-        app:srcCompat="@drawable/delete" />
+        app:srcCompat="@drawable/edit" />
 
     <TextView
         android:id="@+id/Id"
@@ -435,5 +437,24 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imageType"
         app:layout_constraintStart_toEndOf="@+id/Id" />
+
+    <EditText
+        android:id="@+id/nomEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:gravity="bottom"
+        android:paddingBottom="7dp"
+        android:text="50 kN"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_column="1"
+        app:layout_columnWeight="1"
+        app:layout_constraintBottom_toBottomOf="@+id/Nom"
+        app:layout_constraintStart_toStartOf="@+id/Nom"
+        app:layout_constraintTop_toTopOf="@+id/Nom"
+        app:layout_gravity="bottom|center_vertical"
+        app:layout_row="2" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
