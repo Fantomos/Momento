@@ -39,6 +39,8 @@ public class NouvellePoutre extends AppCompatActivity {
             EditText champNom = findViewById(R.id.editNom);
             EditText champLongueur = findViewById(R.id.editLongueur);
             EditText champForce = findViewById(R.id.editForce);
+            EditText champYoung = findViewById(R.id.editYoung);
+            EditText champInertie = findViewById(R.id.editInertie);
 
             boolean valide = true;
             if (TextUtils.isEmpty(champNom.getText().toString())) {
@@ -53,11 +55,21 @@ public class NouvellePoutre extends AppCompatActivity {
                 champForce.setError("Champ obligatoire");
                 valide = false;
             }
+            if (TextUtils.isEmpty(champYoung.getText().toString())) {
+                champYoung.setError("Champ obligatoire");
+                valide = false;
+            }
+            if (TextUtils.isEmpty(champInertie.getText().toString())) {
+                champInertie.setError("Champ obligatoire");
+                valide = false;
+            }
 
             if (valide) {
                 String nom = champNom.getText().toString();
                 double longueur = Double.valueOf(champLongueur.getText().toString());
                 double force = Double.valueOf(champForce.getText().toString());
+                double young = Double.valueOf(champYoung.getText().toString());
+                double inertie = Double.valueOf(champInertie.getText().toString());
                 int type = 1;
                 RadioGroup radioGroup = findViewById(R.id.radioGroup);
                 switch (radioGroup.getCheckedRadioButtonId()) {
@@ -79,7 +91,7 @@ public class NouvellePoutre extends AppCompatActivity {
                 }
                 PoutresDBB db = new PoutresDBB(getBaseContext());
                 db.open();
-                int id2 = (int) db.insertPoutre(new Poutre(nom, type, longueur, force));
+                int id2 = (int) db.insertPoutre(new Poutre(nom, type, longueur, force,young,inertie));
                 db.close();
                 Intent intent = new Intent(NouvellePoutre.this, PoutreDetails.class);
                 intent.putExtra("id", id2);
