@@ -1,8 +1,8 @@
 package com.momento.momento;
 
-import android.app.SearchManager;
-import android.content.Context;
+
 import android.content.Intent;
+
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -97,6 +97,8 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         else if(id == R.id.action_parametre){
+            startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+            overridePendingTransition(R.transition.enter_from_right, R.transition.exit_out_left);
             return true;
         }
 

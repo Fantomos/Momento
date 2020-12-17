@@ -1,0 +1,25 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory app:title="Affichage">
+
+        <SeekBarPreference
+            app:key="precision"
+            app:title="Nombres de décimales"
+            android:min="1"
+            android:max="5"
+            android:defaultValue="2"
+            app:showSeekBarValue="true"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="Données">
+
+        <Preference
+            app:key="renitialisation"
+            app:summary="Supprime toutes les poutres"
+            app:title="Renitialiser" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

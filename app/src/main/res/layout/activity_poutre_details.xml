@@ -25,14 +25,64 @@
         android:id="@+id/imageType"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView"
+        android:padding="20dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/Id"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
         app:layout_constraintVertical_weight="1"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        tools:srcCompat="@drawable/type1" />
+
+    <TextView
+        android:id="@+id/Id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:paddingBottom="5dp"
+        android:text="#105"
+        android:textColor="@color/colorPrimary"
+        android:textSize="28sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView"
+        app:layout_constraintStart_toStartOf="@+id/imageType"
+        app:layout_constraintTop_toBottomOf="@+id/imageType" />
+
+    <TextView
+        android:id="@+id/Nom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:paddingBottom="5dp"
+        android:text="Babar"
+        android:textColor="@color/colorPrimary"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/Id"
+        app:layout_constraintStart_toEndOf="@+id/Id"
+        app:layout_constraintTop_toTopOf="@+id/Id" />
+
+    <EditText
+        android:id="@+id/nomEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:gravity="bottom"
+        android:paddingBottom="7dp"
+        android:text="50 kN"
+        android:textColor="@color/colorPrimary"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_column="1"
+        app:layout_columnWeight="1"
+        app:layout_constraintBottom_toBottomOf="@+id/Nom"
+        app:layout_constraintStart_toStartOf="@+id/Nom"
+        app:layout_constraintTop_toTopOf="@+id/Nom"
+        app:layout_gravity="bottom|center_vertical"
+        app:layout_row="2" />
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -41,7 +91,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageType"
+        app:layout_constraintTop_toBottomOf="@+id/Id"
         app:layout_constraintVertical_weight="3">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -65,7 +115,8 @@
                 app:layout_constraintBottom_toTopOf="@+id/gridLayout2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/abscisse" />
+                app:layout_constraintTop_toBottomOf="@+id/abscisse"
+                app:tickMarkTint="@color/colorPrimaryDark" />
 
             <TextView
                 android:id="@+id/abscisse"
@@ -73,6 +124,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="X = 10 m"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/seekBar"
@@ -94,7 +146,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:rowCount="7"
+                app:rowCount="10"
                 app:useDefaultMargins="true">
 
                 <EditText
@@ -105,7 +157,9 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     android:gravity="top"
+                    android:inputType="numberDecimal"
                     android:text="50 mètres"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="20sp"
                     android:visibility="invisible"
                     app:layout_column="1"
@@ -121,13 +175,55 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     android:gravity="top"
+                    android:inputType="numberSigned|numberDecimal"
                     android:text="50 kN"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="20sp"
                     android:visibility="invisible"
                     app:layout_column="1"
                     app:layout_columnWeight="1"
                     app:layout_gravity="top|center_vertical"
                     app:layout_row="2"
+                    tools:layout_editor_absoluteX="-15dp"
+                    tools:layout_editor_absoluteY="369dp" />
+
+                <EditText
+                    android:id="@+id/youngEdit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="top"
+                    android:inputType="numberDecimal"
+                    android:text="50 MPa"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="20sp"
+                    android:visibility="invisible"
+                    app:layout_column="1"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="top|center_vertical"
+                    app:layout_row="3"
+                    tools:layout_editor_absoluteX="-15dp"
+                    tools:layout_editor_absoluteY="369dp" />
+
+                <EditText
+                    android:id="@+id/inertieEdit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="top"
+                    android:inputType="numberDecimal"
+                    android:text="50 cm^4"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="20sp"
+                    android:visibility="invisible"
+                    app:layout_column="1"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="top|center_vertical"
+                    app:layout_row="4"
                     tools:layout_editor_absoluteX="-15dp"
                     tools:layout_editor_absoluteY="369dp" />
 
@@ -138,6 +234,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     android:text="Type :"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     app:layout_column="0"
@@ -153,6 +250,7 @@
                     android:layout_marginBottom="8dp"
                     android:background="@null"
                     android:text="Deux appuis avec charge ponctuelle au centre"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="20sp"
                     app:layout_column="1"
                     app:layout_columnWeight="1"
@@ -166,6 +264,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     android:text="Longueur :"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     app:layout_column="0"
@@ -179,6 +278,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     android:text="50 mètres"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="20sp"
                     app:layout_column="1"
                     app:layout_columnWeight="1"
@@ -192,6 +292,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     android:text="50 kN"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="20sp"
                     app:layout_column="1"
                     app:layout_columnWeight="1"
@@ -208,6 +309,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     android:text="Force appliquée :"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     app:autoSizeTextType="none"
@@ -216,17 +318,82 @@
                     app:layout_row="2" />
 
                 <TextView
+                    android:id="@+id/young"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="50 MPa"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="20sp"
+                    app:layout_column="1"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="top"
+                    app:layout_row="3"
+                    tools:layout_editor_absoluteX="-15dp"
+                    tools:layout_editor_absoluteY="369dp" />
+
+
+                <TextView
+                    android:id="@+id/labelYoung"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Module de Young : "
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:autoSizeTextType="none"
+                    app:layout_column="0"
+                    app:layout_columnWeight="1"
+                    app:layout_row="3" />
+
+                <TextView
+                    android:id="@+id/inertie"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="50 cm^4"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="20sp"
+                    app:layout_column="1"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="top"
+                    app:layout_row="4"
+                    tools:layout_editor_absoluteX="-15dp"
+                    tools:layout_editor_absoluteY="369dp" />
+
+
+                <TextView
+                    android:id="@+id/labelInertie"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Inertie :"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:autoSizeTextType="none"
+                    app:layout_column="0"
+                    app:layout_columnWeight="1"
+                    app:layout_row="4" />
+
+                <TextView
                     android:id="@+id/labelForceReaction"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     android:text="Force de réaction extérieur : "
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     app:layout_column="0"
                     app:layout_columnWeight="1"
-                    app:layout_row="3" />
+                    app:layout_row="5" />
 
                 <TextView
                     android:id="@+id/forceReaction"
@@ -236,11 +403,12 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     android:text="50 kN"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="20sp"
                     app:layout_column="1"
                     app:layout_columnWeight="1"
                     app:layout_gravity="top"
-                    app:layout_row="3" />
+                    app:layout_row="5" />
 
                 <TextView
                     android:id="@+id/labelMomentReaction"
@@ -249,11 +417,12 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     android:text="Moment de réaction extérieur :"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     app:layout_column="0"
                     app:layout_columnWeight="1"
-                    app:layout_row="4" />
+                    app:layout_row="6" />
 
                 <TextView
                     android:id="@+id/momentReaction"
@@ -263,11 +432,12 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     android:text="50 kN.m"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="20sp"
                     app:layout_column="1"
                     app:layout_columnWeight="1"
                     app:layout_gravity="top"
-                    app:layout_row="4" />
+                    app:layout_row="6" />
 
                 <TextView
                     android:id="@+id/labelTranchantMax"
@@ -276,11 +446,12 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     android:text="Effort tranchant maximal :"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     app:layout_column="0"
                     app:layout_columnWeight="1"
-                    app:layout_row="5" />
+                    app:layout_row="7" />
 
                 <TextView
                     android:id="@+id/tranchantMax"
@@ -290,11 +461,12 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     android:text="50 kN"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="20sp"
                     app:layout_column="1"
                     app:layout_columnWeight="1"
                     app:layout_gravity="top"
-                    app:layout_row="5" />
+                    app:layout_row="7" />
 
                 <TextView
                     android:id="@+id/labelFlechissantMax"
@@ -303,11 +475,12 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     android:text="Moment fléchissant maximal : "
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     app:layout_column="0"
                     app:layout_columnWeight="1"
-                    app:layout_row="6" />
+                    app:layout_row="8" />
 
                 <TextView
                     android:id="@+id/flechissantMax"
@@ -318,10 +491,40 @@
                     android:layout_marginBottom="8dp"
                     android:gravity="top"
                     android:text="50 kN.m"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="20sp"
                     app:layout_column="1"
                     app:layout_columnWeight="1"
-                    app:layout_row="6" />
+                    app:layout_row="8" />
+
+                <TextView
+                    android:id="@+id/labelFleche"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Flèche maximale : "
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_column="0"
+                    app:layout_columnWeight="1"
+                    app:layout_row="9" />
+
+                <TextView
+                    android:id="@+id/fleche"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="top"
+                    android:text="10 mm"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="20sp"
+                    app:layout_column="1"
+                    app:layout_columnWeight="1"
+                    app:layout_row="9" />
 
             </androidx.gridlayout.widget.GridLayout>
 
@@ -346,6 +549,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     android:text="Effort tranchant :"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     app:layout_column="0"
@@ -360,6 +564,7 @@
                     android:layout_marginTop="9dp"
                     android:layout_marginBottom="8dp"
                     android:text="50 kN"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="20sp"
                     app:layout_column="1"
                     app:layout_columnWeight="1"
@@ -373,6 +578,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     android:text="Moment flechissant :"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     app:layout_column="0"
@@ -387,6 +593,7 @@
                     android:layout_marginTop="9dp"
                     android:layout_marginBottom="8dp"
                     android:text="50 kN.m"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="20sp"
                     app:layout_column="1"
                     app:layout_columnWeight="1"
@@ -409,52 +616,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageType"
         app:srcCompat="@drawable/edit" />
-
-    <TextView
-        android:id="@+id/Id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginBottom="8dp"
-        android:text="#105"
-        android:textColor="@android:color/black"
-        android:textSize="28sp"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="@+id/imageType"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/Nom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginBottom="8dp"
-        android:text="Babar"
-        android:textColor="@android:color/black"
-        android:textSize="34sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageType"
-        app:layout_constraintStart_toEndOf="@+id/Id" />
-
-    <EditText
-        android:id="@+id/nomEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:gravity="bottom"
-        android:paddingBottom="7dp"
-        android:text="50 kN"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:visibility="invisible"
-        app:layout_column="1"
-        app:layout_columnWeight="1"
-        app:layout_constraintBottom_toBottomOf="@+id/Nom"
-        app:layout_constraintStart_toStartOf="@+id/Nom"
-        app:layout_constraintTop_toTopOf="@+id/Nom"
-        app:layout_gravity="bottom|center_vertical"
-        app:layout_row="2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

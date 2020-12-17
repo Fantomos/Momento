@@ -55,23 +55,23 @@ public class PoutreListAdapter extends ArrayAdapter<Poutre> {
         switch (p.getType()){
             case 1:
                 textType.setText("Deux appuis avec une charge ponctuelle au centre");
-                imageType.setImageDrawable(ContextCompat.getDrawable(getContext(),R.drawable.ic_launcher_background));
+                imageType.setImageDrawable(ContextCompat.getDrawable(getContext(),R.drawable.type1));
                 break;
             case 2:
                 textType.setText("Deux appuis avec une charge répartie");
-                imageType.setImageDrawable(ContextCompat.getDrawable(getContext(),R.drawable.ic_launcher_background));
+                imageType.setImageDrawable(ContextCompat.getDrawable(getContext(),R.drawable.type2));
                 break;
             case 3:
                 textType.setText("Bi-encastrée avec une charge répartie");
-                imageType.setImageDrawable(ContextCompat.getDrawable(getContext(),R.drawable.ic_launcher_background));
+                imageType.setImageDrawable(ContextCompat.getDrawable(getContext(),R.drawable.type3));
                 break;
             case 4:
                 textType.setText("Encastrée avec une charge répartie");
-                imageType.setImageDrawable(ContextCompat.getDrawable(getContext(),R.drawable.ic_launcher_background));
+                imageType.setImageDrawable(ContextCompat.getDrawable(getContext(),R.drawable.type4));
                 break;
             case 5:
                 textType.setText("Encastrée avec une charge poncutelle au bout");
-                imageType.setImageDrawable(ContextCompat.getDrawable(getContext(),R.drawable.ic_launcher_background));
+                imageType.setImageDrawable(ContextCompat.getDrawable(getContext(),R.drawable.type5));
                 break;
         }
         final String pattern = "##.##";
